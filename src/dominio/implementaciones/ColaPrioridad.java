@@ -13,12 +13,12 @@ public class ColaPrioridad implements ColaPrioridadTDA {
 		Nodo n = new Nodo();
 		n.x = x;
 		n.p = p;
-		if (inicio == null || p > inicio.p) {
+		if (inicio == null || p < inicio.p) {
 			n.sig = inicio;
 			inicio = n;
 		} else {
 			Nodo actual = inicio, anterior = null;
-			while(actual!= null && p <= actual.p) {
+			while(actual!= null && p >= actual.p) {
 				anterior = actual;
 				actual = actual.sig;
 			}
