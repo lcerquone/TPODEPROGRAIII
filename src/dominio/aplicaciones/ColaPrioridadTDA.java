@@ -1,7 +1,10 @@
 package dominio.aplicaciones;
+
+import dominio.implementaciones.NodoArbol;
+
 /**
   * @autor Luis
-  * Cola con prioridad es una estructura que permite almacenar una colección de valores enteros, 
+  * Cola con prioridad es una estructura que permite almacenar una colecciï¿½n de valores enteros, 
   * con la particularidad de que el elemento que el primer elemento en ingresar es el primer elemento en salir.  
   */
 public interface ColaPrioridadTDA {
@@ -9,7 +12,7 @@ public interface ColaPrioridadTDA {
 	 * @Tarea AcolarPrioridad agrega un elemento x con prioridad p a la cola, ambas suministradas.
 	 * @Precondicion la cola debe estar inicializada.
 	 */
-	void acolarPrioridad(int x, int p);
+	void acolarPrioridad(NodoArbol x, double p);
 	/**
 	 * @Tarea Desacolar elimina el elemento con mayor prioridad de la cola.
 	 * @Precondicion la cola no debe estar vacia.
@@ -19,7 +22,7 @@ public interface ColaPrioridadTDA {
 	 * @Tarea Primero devuelve el elemento de mayor prioridad.
 	 * @Precondicion la estructura debe contener elementos.
 	 */
-	int primero();
+	NodoArbol primero();
 	/**
 	 * @Tarea ColaVacia indica si la cola contiene elementos o no.
 	 * @Precondicion la cola debe estar inicializada.
@@ -27,9 +30,9 @@ public interface ColaPrioridadTDA {
 	boolean colaVacia();
 	/**
 	 * @Tarea Prioridad obtiene la prioridad del valor del dato de mayor prioridad. 
-	 * @Precondicion la estructura no debe estar vacía.
+	 * @Precondicion la estructura no debe estar vacï¿½a.
 	 */
-	int prioridad();
+	double prioridad();
 	/**
 	 * @Tarea InicilaizarCola inicializa la estructura cola.
 	 */

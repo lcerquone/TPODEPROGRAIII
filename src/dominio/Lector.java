@@ -17,7 +17,7 @@ public class Lector {
         //Cargo la iformación del archivo.
         try {
             String cadena;
-            FileReader archivo = new FileReader("src/resource/Caminoso.txt");
+            FileReader archivo = new FileReader("src/resource/Caminoso1.txt");
             BufferedReader b = new BufferedReader(archivo);
             //Cargo el archivo completo en el objeto m de la clase metodos, para separar los campos.
             while((cadena = b.readLine())!=null) {
@@ -41,7 +41,7 @@ public class Lector {
         //Cargo la iformación del archivo.
         try {
             String cadena;
-            FileReader archivo = new FileReader("src/resource/DatosClientes.txt");
+            FileReader archivo = new FileReader("src/resource/DatosClientes1.txt");
             BufferedReader b = new BufferedReader(archivo);
             //Cargo el archivo completo en el objeto m de la clase metodos, para separar los campos.
             while((cadena = b.readLine())!=null) {

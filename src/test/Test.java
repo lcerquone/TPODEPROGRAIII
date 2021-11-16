@@ -1,14 +1,15 @@
 package test;
 
+import dominio.BranchAndBound;
 import dominio.CargadorMatriz;
 import dominio.GeneradorGrafo;
 import dominio.Lector;
-import dominio.aplicaciones.ColaPrioridadTDA;
 import dominio.aplicaciones.GrafoTDA;
 import dominio.implementaciones.Camino;
-import dominio.implementaciones.ColaPrioridad;
 import dominio.implementaciones.Horario;
 import dominio.implementaciones.Informacion;
+import dominio.implementaciones.NodoArbol;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +23,7 @@ public class Test {
         GrafoTDA grafo = GeneradorGrafo.generarGrafo(caminos,j);
         List<Integer> visitados = new ArrayList<>();
         GeneradorGrafo.copiarGrafo(grafo,visitados);
-        List<Integer> l = new ArrayList<>();
-        // agarra el ultimo de la lista
-        l.add(6);
-        System.out.println(l.get(l.size()-1));
+        List<Integer> a = BranchAndBound.ViajeroPodaRamificacion(caminos,grafo,h);
+        a.forEach(System.out::println);
     }
 }

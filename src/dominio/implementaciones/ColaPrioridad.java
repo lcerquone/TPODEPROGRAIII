@@ -3,13 +3,14 @@ import dominio.aplicaciones.ColaPrioridadTDA;
 
 public class ColaPrioridad implements ColaPrioridadTDA {
 	private class Nodo{
-		int p,x;
+		double p;
+		NodoArbol x;
 		Nodo sig;
 	}
 	private Nodo inicio;
 
 	@Override
-	public void acolarPrioridad(int x, int p) {
+	public void acolarPrioridad(NodoArbol x, double p) {
 		Nodo n = new Nodo();
 		n.x = x;
 		n.p = p;
@@ -35,7 +36,7 @@ public class ColaPrioridad implements ColaPrioridadTDA {
 	}
 
 	@Override
-	public int primero() {
+	public NodoArbol primero() {
 		return inicio.x;
 	}
 
@@ -45,7 +46,7 @@ public class ColaPrioridad implements ColaPrioridadTDA {
 	}
 
 	@Override
-	public int prioridad() {
+	public double prioridad() {
 		return inicio.p;
 	}
 
