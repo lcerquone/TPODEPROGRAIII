@@ -26,7 +26,6 @@ public class ColaPrioridad implements ColaPrioridadTDA {
 			n.sig = actual;
 			anterior.sig = n;
 		}
-
 	}
 
 	@Override
@@ -53,7 +52,6 @@ public class ColaPrioridad implements ColaPrioridadTDA {
 	@Override
 	public void inicializarCola() {
 		inicio = null;
-
 	}
 
 }

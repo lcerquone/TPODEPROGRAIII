@@ -8,7 +8,7 @@ import dominio.aplicaciones.GrafoTDA;
 import dominio.implementaciones.Camino;
 import dominio.implementaciones.Horario;
 import dominio.implementaciones.Informacion;
-import dominio.implementaciones.NodoArbol;
+import dominio.implementaciones.Kruskal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,12 @@ public class Test {
         List<Camino>[][] caminos = CargadorMatriz.cargarMatriz(j,c);
         GrafoTDA grafo = GeneradorGrafo.generarGrafo(caminos,j);
         List<Integer> visitados = new ArrayList<>();
-        GeneradorGrafo.copiarGrafo(grafo,visitados);
+        visitados.add(0);
         List<Integer> a = BranchAndBound.ViajeroPodaRamificacion(caminos,grafo,h);
         a.forEach(System.out::println);
+        GeneradorGrafo.copiarGrafo(grafo,visitados);
+        GrafoTDA grafoR = Kruskal.caminoMinimo(GeneradorGrafo.copiarGrafo(grafo,visitados));
+        System.out.println(Kruskal.valor(grafoR));
+
     }
 }
