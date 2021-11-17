@@ -7,7 +7,7 @@ public class Horario {
     private LocalTime fechaFin;
     private LocalTime fechaInicio;
 
-    public Horario(String lugar, LocalTime fechaFin, LocalTime fechaInicio) {
+    public Horario(String lugar, LocalTime fechaInicio, LocalTime fechaFin) {
         this.lugar = lugar;
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;

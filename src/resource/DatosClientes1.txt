@@ -1,4 +1,5 @@
 A;CentroDistribucion;"Comesana 4056"			
-B;Boedo;"Boedo 777";100;8;17
+B;Boedo;"Boedo 777";100;7;17
 C;Villareal;"Lope de Vega 2503";100;8;17
+D;Villareal;"Lope de Vega 2503";100;8;17
 D;Villareal;"Lope de Vega 2503";100;8;17

@@ -22,11 +22,11 @@ public class BranchAndBound {
             NodoArbol nodo = NodosVivos.primero();
             Double cotaPrimero = NodosVivos.prioridad();
             NodosVivos.desacolar();
-            if (!Podar(nodo,cotaPrimero,cota)){
+            if (!Podar(nodo,cotaPrimero,cota,horarios)){
                 List<NodoArbol> hijos = GenerarHijos(caminoList,nodo,NodosVivos,horarios);
                 for(NodoArbol hijo: hijos){
                     Double p = CotaInferior();
-                    if(!Podar(hijo,p,cota)){
+                    if(!Podar(hijo,p,cota,horarios)){
                         if(esSolucion(hijo,horarios)){
                             NodoArbol solucion = Solucion(hijo,caminoList);
                             if(solucion.getKilometros()<cota){
@@ -46,8 +46,26 @@ public class BranchAndBound {
 
     }
 
-    private static boolean Podar(NodoArbol n, Double cotainferior, Double cota){
-        return false;
+    private static boolean Podar(NodoArbol n, Double cotainferior, Double cota, List<Horario> listahorario){
+        boolean podar = false;
+        if (cota!=Double.MAX_VALUE) {
+            if (cotainferior > cota) podar = true;
+        }
+        if (n.getVisitados().size()!=1) {
+            Horario horariolocal = listahorario.get(n.getVisitados().get(n.getVisitados().size() - 1));
+            LocalTime horarioInicio = horariolocal.getFechaInicio();
+            LocalTime horarioCierre = horariolocal.getFechaFin();
+            if (n.getHora().isAfter(horarioCierre) || n.getHora().isBefore(horarioInicio)) podar = true;
+            LocalTime horarioMinimo = LocalTime.MAX;
+            for (Horario horario : listahorario) {
+                if (horario.getFechaFin().compareTo(LocalTime.MIN)==1 && horario.getFechaFin().isBefore(horarioMinimo)) {
+                    horarioMinimo = horario.getFechaFin();
+                }
+            }
+            if (n.getHora().isAfter(horarioMinimo)) podar = true;
+
+        }
+        return podar;
     }
 
     private static Double CotaInferior(){
@@ -59,6 +77,7 @@ public class BranchAndBound {
         if (n.getVisitados().size()==horarios.size()){
             flag = true;
         }
+        System.out.println(flag);
         return flag;
     }
 
