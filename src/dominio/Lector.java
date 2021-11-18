@@ -17,15 +17,18 @@ public class Lector {
         //Cargo la iformación del archivo.
         try {
             String cadena;
-            FileReader archivo = new FileReader("src/resource/Caminoso1.txt");
+            FileReader archivo = new FileReader("src/resource/Caminos1.txt");
             BufferedReader b = new BufferedReader(archivo);
             //Cargo el archivo completo en el objeto m de la clase metodos, para separar los campos.
+            b.readLine();
             while((cadena = b.readLine())!=null) {
                 String[] datos = cadena.split("\t");
-                String km = datos[3];
-                String kms = km.replaceAll(",",".");
-                Informacion c = new Informacion(datos[0],datos[1],Double.valueOf(kms),Integer.parseInt(datos[2]));
-                informaciones.add(c);
+
+                    String km = datos[3];
+                    String kms = km.replaceAll(",", ".");
+                    Informacion c = new Informacion(datos[0], datos[1], Double.valueOf(kms), Integer.parseInt(datos[2]));
+                    informaciones.add(c);
+
             }
             b.close();
         } catch (FileNotFoundException e) {
@@ -44,12 +47,16 @@ public class Lector {
             FileReader archivo = new FileReader("src/resource/DatosClientes1.txt");
             BufferedReader b = new BufferedReader(archivo);
             //Cargo el archivo completo en el objeto m de la clase metodos, para separar los campos.
+            b.readLine();
             while((cadena = b.readLine())!=null) {
-                String[] datos = cadena.split(";");
-                if (!datos[0].contains("A"))
-                    horarios.add(new Horario(datos[0],LocalTime.of(Integer.valueOf(datos[4]),0),LocalTime.of(Integer.valueOf(datos[5]),0)));
-                else
-                    horarios.add(new Horario(datos[0],LocalTime.of(0,0),LocalTime.of(0,0)));
+                String[] datos = cadena.split("\t");
+
+
+                    if (!datos[0].contains("A"))
+                        horarios.add(new Horario(datos[0],LocalTime.of(Integer.valueOf(datos[4]),0),LocalTime.of(Integer.valueOf(datos[5]),0)));
+                    else
+                        horarios.add(new Horario(datos[0],LocalTime.of(0,0),LocalTime.of(0,0)));
+
             }
             b.close();
         } catch (FileNotFoundException e) {
